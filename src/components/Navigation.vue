@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app>
+  <v-navigation-drawer app clipped>
     <v-list dense>
       <v-list-item link>
         <v-list-item-action>
