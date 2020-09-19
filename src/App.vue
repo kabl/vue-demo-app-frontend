@@ -2,9 +2,9 @@
   <v-app>
     <Navigation />
     <Bar />
+
     <v-main>
-      <v-container fluid />
-      <HelloWorld />
+      <router-view />
     </v-main>
 
     <v-footer app>footer</v-footer>
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import Navigation from "./components/Navigation";
 import Bar from "./components/Bar";
 
@@ -21,8 +20,7 @@ export default {
 
   components: {
     Navigation,
-    Bar,
-    HelloWorld
+    Bar
   },
 
   data: () => ({
