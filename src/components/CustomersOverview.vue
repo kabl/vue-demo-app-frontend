@@ -53,7 +53,8 @@ export default {
   },
   mounted() {
     axios
-      .get("https://run.mocky.io/v3/06144573-957f-41f1-a2e1-3d581eb4630a")
+      .get("http://localhost:8080/customers")
+      //.get("https://run.mocky.io/v3/06144573-957f-41f1-a2e1-3d581eb4630a")
       .then(response => {
         this.companies = response.data;
         console.log(response.data);
