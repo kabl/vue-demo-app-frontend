@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div>{{ count }}
+    <div>
+      {{ count }}
       <button v-on:click="$store.commit('increment')">Add 1</button>
     </div>
     <v-card>
@@ -8,16 +9,24 @@
       <v-card-text>
         <v-simple-table>
           <template v-slot:default>
-            <thead>
+            <!-- <thead>
               <tr>
                 <th class="text-left">Name</th>
                 <th class="text-left">Property</th>
               </tr>
-            </thead>
+            </thead> -->
             <tbody>
-              <tr v-for="item in desserts" :key="item.name">
-                <td>{{ item.name }}</td>
-                <td>{{ item.calories }}</td>
+              <tr>
+                <td>Avatar</td>
+                <td><v-img :src="avatarUrl" max-width="50px"></v-img></td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>{{userInfo.name}}</td>
+              </tr>
+              <tr>
+                <td>Last Login</td>
+                <td>{{lastLogin}}</td>
               </tr>
             </tbody>
           </template>
@@ -52,8 +61,19 @@ export default {
   computed: {
     count() {
       return this.$store.state.count;
+    },
+    userInfo() {
+      console.log(this.$store);
+      return this.$store.state.userInfo;
+    },
+    lastLogin() {
+      var t = new Date();
+      t.setSeconds(this.userInfo.lastLogin);
+      return t.toUTCString();
+    },
+    avatarUrl() {
+      return "https://avatars.dicebear.com/api/bottts/" + this.userInfo.name + ".svg";
     }
-  },
-
+  }
 };
 </script>
