@@ -24,7 +24,7 @@
             <td>{{ c.mail }}</td>
             <td>{{ c.address }}</td>
             <td>
-              <v-btn color="primary" fab x-small v-on:click="editCustomer">
+              <v-btn color="primary" fab x-small @click="editCustomer(c.id)">
                 <v-icon>mdi-pencil</v-icon>
               </v-btn>
             </td>
@@ -33,7 +33,7 @@
       </template>
     </v-simple-table>
     <div class="my-2">
-      <v-btn depressed small color="primary">Add Customer</v-btn>
+      <v-btn depressed small color="primary" @click="createNewCustomer">Add New Customer</v-btn>
     </div>
   </v-container>
 </template>
@@ -60,11 +60,13 @@ export default {
       });
   },
   methods: {
-    editCustomer(event) {
-      console.log("edit customer", event);
-      this.$router.push('customers/1');
-
-    } 
+    editCustomer(id) {
+      console.log("edit customer:", id);
+      this.$router.push('customers/' + id);
+    },
+    createNewCustomer() {
+      this.$router.push('customers/new');
+    }
   }
 };
 </script>

@@ -20,15 +20,18 @@ export default {
 
   data() {
     return {
-      customer: Object
+      customer: { name: null, mail: null, address: null, notes: null },
+      id: null
     };
   },
   mounted() {
-    axios
-      .get("https://run.mocky.io/v3/06144573-957f-41f1-a2e1-3d581eb4630a")
-      .then(response => {
-        this.customer = response.data[this.$route.params.id - 1];
-      });
+    if (this.$route.params.id !== "new") {
+      axios
+        .get("https://run.mocky.io/v3/06144573-957f-41f1-a2e1-3d581eb4630a")
+        .then(response => {
+          this.customer = response.data[this.$route.params.id - 1];
+        });
+    }
   },
   created() {
     console.log("route", this.$route.params.id);
