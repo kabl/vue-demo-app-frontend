@@ -33,7 +33,9 @@
       </template>
     </v-simple-table>
     <div class="my-2">
-      <v-btn depressed small color="primary" @click="createNewCustomer">Add New Customer</v-btn>
+      <v-btn depressed small color="primary" @click="createNewCustomer"
+        >Add New Customer</v-btn
+      >
     </div>
   </v-container>
 </template>
@@ -44,18 +46,18 @@ import axios from "axios";
 
 export default {
   components: {
-  //  CustomersOverview
+    //  CustomersOverview
   },
   data() {
     return {
-      companies: []
+      companies: [],
     };
   },
   mounted() {
     axios
       .get("http://localhost:8080/customers")
       //.get("https://run.mocky.io/v3/06144573-957f-41f1-a2e1-3d581eb4630a")
-      .then(response => {
+      .then((response) => {
         this.companies = response.data;
         console.log(response.data);
       });
@@ -63,11 +65,11 @@ export default {
   methods: {
     editCustomer(id) {
       console.log("edit customer:", id);
-      this.$router.push('customers/' + id);
+      this.$router.push("/customers/" + id);
     },
     createNewCustomer() {
-      this.$router.push('customers/new');
-    }
-  }
+      this.$router.push("/customers/new");
+    },
+  },
 };
 </script>
